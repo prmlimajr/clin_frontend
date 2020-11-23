@@ -1,0 +1,36 @@
+.patientsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 0;
+  margin-top: 120px;
+  background-color: #ececec;
+  width: 100%;
+}
+
+#patientsForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.gender {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.gender label {
+  margin-right: 15px;
+  margin-left: 5px;
+}
+
+.addHealthCond {
+  display: flex;
+}
+
+.addHealthCond button {
+  width: 60px;
+  margin-left: 10px;
+}

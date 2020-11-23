@@ -1,0 +1,64 @@
+.adminCard {
+  background-color: #ffdbcb;
+  margin-bottom: 10px;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #595959;
+  padding: 5px 50px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.adminCard:hover {
+  background-color: #ffc5ac;
+}
+
+.userCard {
+  background-color: #f3f5fc;
+  margin-bottom: 10px;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #595959;
+  padding: 5px 50px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.userCard:hover {
+  background-color: #fff;
+}
+
+.settings img {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .adminCard {
+    display: flex;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .adminCard h1 {
+    font-size: 20px;
+  }
+
+  .userCard {
+    display: flex;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .userCard h1 {
+    font-size: 20px;
+  }
+}
