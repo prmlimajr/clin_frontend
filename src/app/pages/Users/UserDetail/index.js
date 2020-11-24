@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import {
-  getUser,
-  updateUser,
-} from '../../../../api/users';
+import { getUser, updateUser } from '../../../../api/users';
 
 import ChevronLeft from '../../../../assets/img/chevron-left.svg';
 import Plus from '../../../../assets/img/plus.svg';
@@ -15,9 +12,9 @@ import './UserDetail.css';
 class UserDetail extends Component {
   state = {
     name: '',
-    email:'',
+    email: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
   };
 
   componentDidMount = async () => {
@@ -59,21 +56,23 @@ class UserDetail extends Component {
     const patientId = this.props.match.params.id;
     const { name, birthday, genderId, cpf } = this.state;
 
-    await updateUser(patientId, { name, birthday, genderId, cpf });  handleDeleteCondition = async (e, id) => {
-    e.preventDefault();
+    await updateUser(patientId, { name, birthday, genderId, cpf });
+    handleDeleteCondition = async (e, id) => {
+      e.preventDefault();
 
-    await users(id);
+      await users(id);
 
-    const patientId = this.props.match.params.id;
-    const patient = await getUser(patientId);
+      const patientId = this.props.match.params.id;
+      const patient = await getUser(patientId);
 
-    this.setState({
-      name: patient.name,
-      cpf: patient.cpf,
-      genderId: patient.genderId,
-      birthday: patient.birthday,
-      healthConditions: [...patient.conditions],
-    });
+      this.setState({
+        name: patient.name,
+        cpf: patient.cpf,
+        genderId: patient.genderId,
+        birthday: patient.birthday,
+        healthConditions: [...patient.conditions],
+      });
+    };
   };
 
   render() {
