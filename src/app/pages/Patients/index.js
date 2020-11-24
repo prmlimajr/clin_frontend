@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Button from '../../components/Button';
 
 import DataCard from '../../components/DataCard';
 import ChevronLeft from '../../../assets/img/chevron-left.svg';
 import Search from '../../../assets/img/search.svg';
 import Plus from '../../../assets/img/plus.svg';
 import PlusCircle from '../../../assets/img/plus-circle.svg';
+import Edit from '../../../assets/img/edit.svg';
 
 import './Patients.css';
 
-import { getPatients } from '../../../api/patients';
+import { getPatients, deletePatient } from '../../../api/patients';
 
 class Patients extends Component {
   state = {
@@ -67,8 +69,19 @@ class Patients extends Component {
     this.props.history.push('/patient-register');
   };
 
+  handleDelete = async (id) => {
+    await deletePatient(id);
+
+    const { search, page, perPage } = this.state;
+
+    const patients = await getPatients({ search, page, perPage });
+
+    this.setState({
+      patients,
+    });
+  };
+
   render() {
-    console.log(this.state);
     const { patients } = this.state;
     return (
       <>
@@ -84,28 +97,37 @@ class Patients extends Component {
             <input
               type='text'
               className='search'
+              placeholder='Buscar'
               onChange={this.onSearchChange}
             />
-            <button onClick={() => this.addPatient()}>
-              <img src={Plus} alt='Cadastrar' /> CADASTRAR
-            </button>
+            <Button
+              logo={Plus}
+              handleClick={() => this.addPatient()}
+              content='CADASTRAR'
+            />
           </div>
         </div>
 
         <div className='data'>
           {patients.map((patient) => {
             return (
-              <DataCard
-                key={patient.id}
-                name={patient.name}
-                birthday={patient.birthday}
-                age={patient.age}
-                gender={patient.gender}
-              />
+              <div className='row'>
+                <DataCard
+                  key={patient.id}
+                  name={patient.name}
+                  birthday={patient.birthday}
+                  age={patient.age}
+                  gender={patient.gender}
+                  handleEdit={() =>
+                    this.props.history.push(`/patients/${patient.id}`)
+                  }
+                  handleDelete={() => this.handleDelete(patient.id)}
+                />
+              </div>
             );
           })}
           <button onClick={() => this.onClickIncreaseListLimit()}>
-            <img src={PlusCircle} alt='Ver mais' />
+            <img src={PlusCircle} alt='Ver mais' /> Ver mais
           </button>
         </div>
       </>

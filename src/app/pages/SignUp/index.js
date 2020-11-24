@@ -41,7 +41,7 @@ export default function SignUp() {
       <form onSubmit={handleSubmit} id='signinForm'>
         <label htmlFor='name'>Nome</label>
         <input
-          type='textame'
+          type='text'
           id='name'
           className='inputForm'
           onChange={(e) => setName(e.target.value)}

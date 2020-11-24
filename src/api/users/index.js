@@ -16,8 +16,8 @@ export async function userSignIn({ email, password }) {
   try {
     const res = await Api.post('/session', { email, password });
 
-    const { token } = res.data;
-    login(token);
+    const { token, user } = res.data;
+    login(token, user);
   } catch (err) {
     alert('Falha na autenticação. Verifique seus dados.');
   }
@@ -25,4 +25,21 @@ export async function userSignIn({ email, password }) {
 
 export function userSignOut() {
   logout();
+}
+
+export async function getUsers({ search, page, perPage }) {
+  const call = await Api.get(
+    `/users/lazy?search=${search}&page=${page}&perPage=${perPage}`
+  );
+
+  return call.data;
+}
+
+export async function deleteUser(id) {
+  try {
+    await Api.delete(`/users/${id}`);
+    alert('Usuário deletado do sistema.');
+  } catch (err) {
+    alert('Falha no processo. Tente novamente.');
+  }
 }

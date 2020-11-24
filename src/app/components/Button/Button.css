@@ -6,6 +6,7 @@ button {
   width: 300px;
   border-style: none;
   border-radius: 8px;
+  margin-left: 5px;
 }
 
 .btn {

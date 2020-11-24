@@ -9,7 +9,7 @@ export default class DataCard extends Component {
     return (
       <div className='dataCard'>
         <div className='mainInfo'>
-          <h3>{this.props.name}</h3>
+          <h3 onClick={(e) => alert(this.props.key)}>{this.props.name}</h3>
           <small>Data de nascimento: {this.props.birthday}</small>
         </div>
 
@@ -18,8 +18,12 @@ export default class DataCard extends Component {
             {this.props.age} anos. Sexo: {this.props.gender}
           </small>
           <div className='settings'>
-            <img src={Edit} alt='editar' />
-            <img src={TrashCan} alt='apagar' />
+            <img src={Edit} alt='editar' onClick={this.props.handleEdit} />
+            <img
+              src={TrashCan}
+              alt='deletar'
+              onClick={this.props.handleDelete}
+            />
           </div>
         </div>
       </div>
