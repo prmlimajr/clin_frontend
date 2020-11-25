@@ -7,7 +7,6 @@ import ChevronLeft from '../../../assets/img/chevron-left.svg';
 import Search from '../../../assets/img/search.svg';
 import Plus from '../../../assets/img/plus.svg';
 import PlusCircle from '../../../assets/img/plus-circle.svg';
-import Edit from '../../../assets/img/edit.svg';
 
 import './Patients.css';
 

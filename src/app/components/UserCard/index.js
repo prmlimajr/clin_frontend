@@ -15,9 +15,13 @@ export default class UserCard extends Component {
         <h1>{this.props.name}</h1>
 
         <div className='settings'>
-          <img src={Settings} alt='administrar' />
-          <img src={Edit} alt='editar' />
-          <img src={TrashCan} alt='apagar' />
+          <img
+            src={Settings}
+            alt='administrar'
+            onClick={this.props.handleAdmin}
+          />
+          <img src={Edit} alt='editar' onClick={this.props.handleEdit} />
+          <img src={TrashCan} alt='apagar' onClick={this.props.handleDelete} />
         </div>
       </div>
     );

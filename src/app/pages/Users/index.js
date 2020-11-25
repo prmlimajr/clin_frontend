@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import Button from '../../components/Button';
-import SeeMoreButton from '../../components/SeeMoreButton';
+
 import UserCard from '../../components/UserCard';
 import ChevronLeft from '../../../assets/img/chevron-left.svg';
 import Search from '../../../assets/img/search.svg';
 import Plus from '../../../assets/img/plus.svg';
+import PlusCircle from '../../../assets/img/plus-circle.svg';
 
-import { getUsers, deleteUser } from '../../../api/users';
+import { getUsers, deleteUser, adminUser } from '../../../api/users';
 
 import './Users.css';
 import { Link } from 'react-router-dom';
@@ -79,7 +80,24 @@ class Users extends Component {
     });
   };
 
+  handleEdit = (id) => {
+    this.props.history.push(`/users/${id}`);
+  };
+
+  handleAdmin = async (id) => {
+    await adminUser(id);
+
+    const { search, page, perPage } = this.state;
+
+    const users = await getUsers({ search, page, perPage });
+
+    this.setState({
+      users,
+    });
+  };
+
   render() {
+    console.log(this.state.users);
     return (
       <>
         <div className='users'>
@@ -113,13 +131,17 @@ class Users extends Component {
                   key={user.id}
                   name={user.name.toUpperCase()}
                   admin={user.admin}
-                  handleDelete={() => this.handleDelete()}
+                  handleDelete={() => this.handleDelete(user.id)}
+                  handleEdit={() => this.handleEdit(user.id)}
+                  handleAdmin={() => this.handleAdmin(user.id)}
                 />
               </div>
             );
           })}
 
-          <SeeMoreButton />
+          <button onClick={() => this.onClickIncreaseListLimit()}>
+            <img src={PlusCircle} alt='Ver mais' /> Ver mais
+          </button>
         </div>
       </>
     );

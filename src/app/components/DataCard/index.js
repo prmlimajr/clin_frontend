@@ -9,7 +9,7 @@ export default class DataCard extends Component {
     return (
       <div className='dataCard'>
         <div className='mainInfo'>
-          <h3 onClick={(e) => alert(this.props.key)}>{this.props.name}</h3>
+          <h3>{this.props.name}</h3>
           <small>Data de nascimento: {this.props.birthday}</small>
         </div>
 

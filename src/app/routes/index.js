@@ -22,7 +22,7 @@ export default function Routes() {
         <PrivateRoute path='/patients' exact component={Patients} />
         <PrivateRoute path='/users' exact component={Users} />
         <PrivateRoute path='/user-register' component={UsersRegister} />
-        <PrivateRoute path='/user/:id' component={UserDetail} />
+        <PrivateRoute path='/users/:id' component={UserDetail} />
         <PrivateRoute path='/patient-register' component={PatientsRegister} />
         <PrivateRoute path='/patients/:id' component={PatientDetail} />
       </Switch>
