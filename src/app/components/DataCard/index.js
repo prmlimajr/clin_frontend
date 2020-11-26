@@ -15,7 +15,8 @@ export default class DataCard extends Component {
 
         <div className='secondaryInfo'>
           <small>
-            {this.props.age} anos. Sexo: {this.props.gender}
+            {this.props.age} anos. Sexo: {this.props.gender} - Médico:{' '}
+            <h2>{this.props.doctor}</h2>
           </small>
           <div className='settings'>
             <img src={Edit} alt='editar' onClick={this.props.handleEdit} />

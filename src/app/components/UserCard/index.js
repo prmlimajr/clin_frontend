@@ -14,6 +14,8 @@ export default class UserCard extends Component {
       >
         <h1>{this.props.name}</h1>
 
+        <p>{this.props.email}</p>
+
         <div className='settings'>
           <img
             src={Settings}

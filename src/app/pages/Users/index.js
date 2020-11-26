@@ -130,6 +130,7 @@ class Users extends Component {
                 <UserCard
                   key={user.id}
                   name={user.name.toUpperCase()}
+                  email={user.email}
                   admin={user.admin}
                   handleDelete={() => this.handleDelete(user.id)}
                   handleEdit={() => this.handleEdit(user.id)}

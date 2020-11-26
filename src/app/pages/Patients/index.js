@@ -81,6 +81,7 @@ class Patients extends Component {
   };
 
   render() {
+    console.log(this.state.patients);
     const { patients } = this.state;
     return (
       <>
@@ -115,6 +116,7 @@ class Patients extends Component {
                   key={patient.id}
                   name={patient.name}
                   birthday={patient.birthday}
+                  doctor={patient.doctor}
                   age={patient.age}
                   gender={patient.gender}
                   handleEdit={() =>
